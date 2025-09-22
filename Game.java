@@ -9,6 +9,7 @@ public class Game {
     private Player currentPlayer;
     private int currentPlayerIndex;
     private boolean gameOver;
+    private Scanner scanner;
     
     public Game(Board board, List<Player> players, Dice dice, 
                 WinningStrategy winningStrategy, KillingStrategy killingStrategy) {
@@ -20,6 +21,7 @@ public class Game {
         this.currentPlayerIndex = 0;
         this.currentPlayer = players.get(0);
         this.gameOver = false;
+        this.scanner = new Scanner(System.in);
     }
     
     public void playGame() {
@@ -55,6 +57,19 @@ public class Game {
         System.out.println("\n" + currentPlayer.getName() + "'s turn (Current position: " + 
                           currentPlayer.getPosition() + ")");
         
+        // Wait for player input before rolling dice
+        if (currentPlayer instanceof HumanPlayer) {
+            System.out.print("Press Enter to roll the dice...");
+            scanner.nextLine();
+        } else {
+            System.out.println("🤖 " + currentPlayer.getName() + " (Bot) is rolling...");
+            try {
+                Thread.sleep(1000); // Small delay for bot turns
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        
         int diceRoll = dice.roll();
         System.out.println("🎲 Rolled: " + diceRoll);
         
@@ -70,6 +85,9 @@ public class Game {
         
         currentPlayer.setPosition(newPosition);
         System.out.println("→ Moved to position: " + newPosition);
+        
+        // Apply killing strategy after moving
+        killingStrategy.applyStrategy(currentPlayer, players);
         
         // Check for snakes and ladders
         Transport transport = board.getTransport(newPosition);

@@ -12,7 +12,11 @@ A Java implementation of the classic Snake and Ladder board game with customizab
 - **Winning Strategies**:
   - Default: Win by reaching or exceeding the final position
   - Exact: Win only by landing exactly on the final position
+- **Killing Strategies**:
+  - Default: Players can occupy the same position
+  - Start Again: If a player lands on another player's position, the other player is killed and starts over
 - **Player Types**: Support for both human and bot players
+- **Interactive Gameplay**: Human players press Enter to roll dice, bots roll automatically
 - **Visual Board Display**: See the current game state with player positions
 
 ## How to Run
@@ -36,6 +40,7 @@ A Java implementation of the classic Snake and Ladder board game with customizab
    - Enter board size (recommended: 6-10)
    - Select difficulty level (1-3)
    - Choose winning strategy (1-2)
+   - Choose killing strategy (1-2)
    - Enter number of players (2-4)
    - For each player, enter name and choose human/bot
 
@@ -43,9 +48,20 @@ A Java implementation of the classic Snake and Ladder board game with customizab
 
 1. **Game Setup**: The game will randomly place snakes and ladders on the board based on your chosen difficulty.
 
-2. **Turn System**: Players take turns rolling a dice (1-6) and moving their position.
+2. **Turn System**: 
+   - Human players press Enter to roll the dice
+   - Bot players roll automatically after a short delay
+   - Players take turns rolling a dice (1-6) and moving their position
 
-3. **Special Squares**:
+3. **Player Interaction**:
+   - **Killing (if enabled)**: If you land on another player's exact position, they are killed and start over from position 0
+   - Multiple players can occupy the same square (if killing is disabled)
+
+3. **Player Interaction**:
+   - **Killing (if enabled)**: If you land on another player's exact position, they are killed and start over from position 0
+   - Multiple players can occupy the same square (if killing is disabled)
+
+4. **Special Squares**:
    - **Snakes (S)**: If you land on a snake's head, you slide down to its tail
    - **Ladders (L)**: If you land on a ladder's bottom, you climb up to its top
 
@@ -71,11 +87,12 @@ Example board:
 
 ## Game Rules
 
+- Human players press Enter to roll dice, bots roll automatically
 - Roll dice to move forward
 - Land on snake head → slide down to tail
 - Land on ladder bottom → climb up to top
+- **Killing mode**: Landing on another player's position sends them back to start
 - First to reach/exceed final position wins (or land exactly, depending on strategy)
-- Multiple players can occupy the same square
 
 ## File Structure
 
@@ -96,7 +113,8 @@ Example board:
 For a quick test, try these settings:
 - Board size: 6
 - Difficulty: Easy
-- Strategy: Default
+- Winning Strategy: Default
+- Killing Strategy: Start Again (for more excitement!)
 - 2 players (one human, one bot)
 
 Enjoy the game! 🎲

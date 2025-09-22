@@ -39,6 +39,16 @@ public class Play {
         WinningStrategy winningStrategy = (winChoice == 2) ? 
             new ExactNumberWinningStrategy() : new DefaultWinningStrategy();
         
+        // Select killing strategy
+        System.out.println("\nSelect killing strategy:");
+        System.out.println("1. DEFAULT (players can occupy same position)");
+        System.out.println("2. START AGAIN (player landing on occupied position kills other player)");
+        System.out.print("Enter choice (1-2): ");
+        int killChoice = scanner.nextInt();
+        
+        KillingStrategy killingStrategy = (killChoice == 2) ? 
+            new StartAgainKillingStrategy() : new DefaultKillingStrategy();
+        
         // Get number of players
         System.out.print("\nEnter number of players (2-4): ");
         int numPlayers = Math.min(4, Math.max(2, scanner.nextInt()));
@@ -63,7 +73,6 @@ public class Play {
         // Create board and game components
         Board board = new Board(boardSize);
         Dice dice = new SixSidedDice();
-        KillingStrategy killingStrategy = new DefaultKillingStrategy();
         
         // Setup snakes and ladders randomly
         setupSnakesAndLadders(board, difficulty, boardSize);
