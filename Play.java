@@ -27,7 +27,7 @@ public class Play {
             default: level = Level.EASY; break;
         }
         
-        Difficulty difficulty = new Difficulty(level);
+        Difficulty difficulty = new Difficulty(level, boardSize);
         
         // Select winning strategy
         System.out.println("\nSelect winning strategy:");
@@ -75,6 +75,12 @@ public class Play {
         Dice dice = new SixSidedDice();
         
         // Setup snakes and ladders randomly
+        System.out.println("\n📊 Game Configuration:");
+        System.out.println("Board size: " + boardSize + "x" + boardSize + " (" + (boardSize * boardSize) + " cells)");
+        System.out.println("Difficulty: " + difficulty.getLevel());
+        System.out.println("Snakes: " + difficulty.getNumberOfSnakes());
+        System.out.println("Ladders: " + difficulty.getNumberOfLadders());
+        
         setupSnakesAndLadders(board, difficulty, boardSize);
         
         // Create and start game

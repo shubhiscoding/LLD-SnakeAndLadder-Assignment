@@ -8,10 +8,10 @@ A Java implementation of the classic Snake and Ladder board game with customizab
 ## Features
 
 - **Customizable Board Size**: Choose your preferred board dimensions (e.g., 6x6, 10x10)
-- **Multiple Difficulty Levels**:
-  - Easy: 3 snakes, 5 ladders
-  - Medium: 5 snakes, 4 ladders  
-  - Hard: 7 snakes, 3 ladders
+- **Multiple Difficulty Levels** (scales with board size):
+  - Easy: More ladders than snakes (easier to climb up)
+  - Medium: Balanced snakes and ladders
+  - Hard: More snakes than ladders (harder to progress)
 - **Winning Strategies**:
   - Default: Win by reaching or exceeding the final position
   - Exact: Win only by landing exactly on the final position
