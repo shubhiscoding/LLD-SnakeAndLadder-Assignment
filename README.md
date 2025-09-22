@@ -2,6 +2,9 @@
 
 A Java implementation of the classic Snake and Ladder board game with customizable features and CLI interface.
 
+## Class Diagram
+<img width="1412" height="682" alt="image" src="https://github.com/user-attachments/assets/dbbb1860-0266-43f3-a426-a1088461f524" />
+
 ## Features
 
 - **Customizable Board Size**: Choose your preferred board dimensions (e.g., 6x6, 10x10)
